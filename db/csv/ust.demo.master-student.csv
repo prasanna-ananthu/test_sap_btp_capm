@@ -1,0 +1,4 @@
+id,firstName,lastName,age,class_id,houseNo,street,sector,city,country,landmark
+101,sap,btp,22,1,213,MG Road,Sector 39,Gurgaon,IN,MGF mall
+102,java,spring,24,2,13,Richmond Road,Sector 55,Banguluru,IN,Near Vishal mega mart
+103,javascript,nodejs,28,3,899,St johns road,Sector 77,Gurgaon,IN,DLF mega city

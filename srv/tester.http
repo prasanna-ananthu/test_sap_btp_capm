@@ -1,0 +1,109 @@
+###Get the service document
+http://localhost:4004/odata/v4/CatalogService
+
+###Get service metadata document
+http://localhost:4004/odata/v4/CatalogService/$metadata
+ 
+###Get all Employee Data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+###Create new employee with our data payload - POST
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+ 
+{
+  "nameFirst": "Christiano",
+  "nameMiddle": "M",
+  "nameLast": "Ronaldo",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": "+918810504555",
+  "email": "chris.ronaldo@gmail.com",
+  "loginName": "CHRISRL",
+  "Currency_code": "USD",
+  "salaryAmount": 76395,
+  "accountNumber": "32109876",
+  "bankId": "66665555",
+  "bankName": "My Bank of London"
+}
+
+###Get the employee data which was just created //here we need to change the emp id
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/54582d84-1af0-4b41-8247-0e20dc68d00e
+
+###Update employee data - PATCH     //change the id and send
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/54582d84-1af0-4b41-8247-0e20dc68d00e
+Content-Type: application/json
+ 
+{
+    "salaryAmount":100000,
+    "Currency_code": "EUR"
+}
+
+###Delete data from DB using Service - DELETE
+DELETE http://localhost:4004/odata/v4/CatalogService/EmployeeSet/54582d84-1af0-4b41-8247-0e20dc68d00e
+
+###Get single employee data by KEY (ID)
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C197A7FB
+ 
+###Get the total count of all employees - $count
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+###Get the total count of all employees - ?$format 
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$format=json
+
+###Get the data chunk by chunk = pagination = $top, $skip
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=3&$skip=1
+ 
+###Filtering data based on condition - $filter
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=bankName eq 'My Bank of New York'
+ 
+###Pattern based filtering
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=contains(nameFirst,'Fr')&(nameLast, 'Ri')
+ 
+###Select particular column data - $select
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$select=nameFirst,nameLast,loginName
+
+###Get the data from CDS view
+http://localhost:4004/odata/v4/CatalogService/Products
+ 
+###Load single product by id
+http://localhost:4004/odata/v4/CatalogService/Products/74867AD200E41EDBA5D8B06B26EB4052
+ 
+###Get me the order where this product was used - lazy loading
+http://localhost:4004/odata/v4/CatalogService/Products/74867AD200E41EDBA5D8B06B26EBA052/To_Items
+ 
+ 
+###Get product and item data together in single call
+http://localhost:4004/odata/v4/CatalogService/Products/74867AD200E41EDBA5D8B06B26EBA052?$expand=To_Items
+
+###Get all PO
+http://localhost:4004/odata/v4/CatalogService/POs
+ 
+###Get Single PO
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC30052
+ 
+###Get PO with its items
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC30052?$expand=Items
+
+###Get Single PO
+
+POST http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC30052/CatalogService.boost
+Content-Type: application/json
+ 
+{}
+
+###Get function data for largest order
+http://localhost:4004/odata/v4/CatalogService/largestOrder()
+
+###Get function data for smallest order
+http://localhost:4004/odata/v4/CatalogService/smallestOrder()
+
+###Get the service document - v2
+http://localhost:4004/v2/odata/v4/CatalogService
+ 
+###Get service metadata document - v2
+http://localhost:4004/v2/odata/v4/CatalogService/$metadata
+ 
+###Get all Employee Data - v2
+http://localhost:4004/v2/odata/v4/CatalogService/EmployeeSet
