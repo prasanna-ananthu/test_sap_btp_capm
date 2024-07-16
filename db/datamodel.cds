@@ -66,7 +66,7 @@ context master {            //context --> group pf related fields
         salaryAmount: common.AmountT;
         accountNumber: String(16);
         bankName:String(40);
-        bankId: String(8);
+        bankId: String(40);
     }
 }
  
